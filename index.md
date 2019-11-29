@@ -1,3 +1,7 @@
+## 没有瞎猫的知识点整理库
+
+目前暂时保留该页面上的一些初始内容，等我整理明白了再去除。
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/NoBlindCat/noblindcat.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
