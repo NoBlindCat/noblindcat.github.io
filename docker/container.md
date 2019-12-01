@@ -21,18 +21,24 @@
 
 如上图所示，镜像采用分层构建机制，最底层为bootfs，其次为rootfs。
 
-bootfs：用于系统引导的文件系统，包括BootLoader和kernel，容器启动完成后会会被卸载以节约内存资源；
+- bootfs：用于系统引导的文件系统，包括BootLoader和kernel，容器启动完成后会会被卸载以节约内存资源；
 
-rootfs：位于bootfs之上，表现为docker容器的根文件系统；
+- rootfs：位于bootfs之上，表现为docker容器的根文件系统；
 
-传统模式中，系统启动之时，内核挂载rootfs时会首先将其以“只读”模式挂载，完整性自检完成后将其重新挂载为读写模式；
+   - 传统模式中，系统启动之时，内核挂载rootfs时会首先将其以“只读”模式挂载，完整性自检完成后将其重新挂载为读写模式；
 
-docker中，rootfs由内核以“只读”模式挂载，而后通过“联合挂载”技术额外挂载一个“可写”层，容器中的写操作都在这个层完成。
+   - docker中，rootfs由内核以“只读”模式挂载，而后通过“联合挂载”技术额外挂载一个“可写”层，容器中的写操作都在这个层完成。
 
-————————————————
 
-版权声明：本文为CSDN博主「ccschan」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
-原文链接：https://blog.csdn.net/ccschan/article/details/88095303
+### 镜像结构
+
+通常，我们下载的镜像可能包含了很多层，位于下层的镜像称为父镜像(parent image)，最底层的称为基础镜像(base image)；最上层为“可读写”层，即可写容器。其下层均为“只读”
+
+如下图所示中，基础镜像为ubuntu，这是可能是一个裁剪过的ubuntu系统，它作为整个镜像的base image；当加入了emacs后，又重新创建了一个包含了ubuntu和emacs的镜像；随后在emacs镜像重新加入Apache，又重新创建了一个包含了ubuntu、emacs、Apache的镜像；接下来，启动容器后，docker会在这些父镜像的最上层附加一层“可写容器”层。
+
+容器在启动时，会将该镜像中的所有父镜像按顺序下载至本地，再启动容器。
+![](./imag-layer.png)
+
 
 ## 容器
 
@@ -59,3 +65,18 @@ Docker仓库（Repository）用来保存镜像,类似与代码仓库，是Docker
 ![registry.png](./registry.png)
 
 ![Repositories, Container and Image](./container-image.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+## 文章参考
+[CSDN:Docker容器之镜像仓库详解](https://blog.csdn.net/ccschan/article/details/88095303)
