@@ -1,3 +1,5 @@
+# Docker
+
 ## 镜像
 
 容器运行时的只读模板，操作系统+软件运行环境+用户程序。
@@ -23,7 +25,10 @@
 
 ## 仓库
 
-仓库是集中存放镜像的地方。每个服务器上可以有多个仓库。
+Docker仓库（Repository）用来保存镜像,类似与代码仓库，是Docker集中存放镜像文件的场所
+
+每个服务器上可以有多个仓库。
+
 仓库又分为公有仓库（DockerHub、dockerpool）和私有仓库
 
 ![Repositories, Container and Image](./container-image.png)
