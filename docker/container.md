@@ -25,10 +25,16 @@
 
 ## 仓库
 
-Docker仓库（Repository）用来保存镜像,类似与代码仓库，是Docker集中存放镜像文件的场所
+Docker仓库（Repository）用来保存镜像,类似与代码仓库，是Docker集中存放镜像文件的场所。
 
 每个服务器上可以有多个仓库。
 
-仓库又分为公有仓库（DockerHub、dockerpool）和私有仓库
+仓库又分为公有仓库（DockerHub、dockerpool）和私有仓库。
+
+公有的Docker仓库名字是Docker Hub。Docker Hub提供了庞大的镜像集合供使用。这些镜像可以是你自己创建的，或者你也可以在别人的镜像基础上创建。Docker仓库是Docker的 分发 部分。
+
+启动容器时，docker daemon会试图从从本地获取相关镜像；当本地镜像不存在时，其将从Regitry中下载该镜像并保存至本地；pull镜像必须使用https协议，如果要使用http，必须在配置文件中明确指定信任该http站。
+
+
 
 ![Repositories, Container and Image](./container-image.png)
