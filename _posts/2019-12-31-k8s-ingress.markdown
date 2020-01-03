@@ -28,14 +28,14 @@ categories: jekyll update
     $ kubectl apply -f common/default-server-secret.yaml
     ```
 
-    **注意**: The default server returns the Not Found page with the 404 status code for all requests for domains for which there are no Ingress rules defined. For testing purposes we include a self-signed certificate and key that we generated. However, we recommend that you use your own certificate and key.
+    **注意**:对于没有定义Ingress规则域名的请求，默认服务器会返回404 Not Found页。处于测试的目的，我们包括一个自签名证书和我们生成的密钥。但是，我们建议您使用自己的证书和密钥。
 
-1. Create a config map for customizing NGINX configuration (read more about customization [here](configmap-and-annotations.md)):
+1. 创建用于自定义NGINX配置的ConfigMap(关于更多自定义的配置点击[这里](https://github.com/nginxinc/kubernetes-ingress/blob/master/docs/configmap-and-annotations.md)):
     ```
     $ kubectl apply -f common/nginx-config.yaml
     ```
 
-1. Create custom resource definitions for [VirtualServer and VirtualServerRoute](virtualserver-and-virtualserverroute.md) resources:
+1. 为[VirtualServer 和 VirtualServerRoute](https://github.com/nginxinc/kubernetes-ingress/blob/master/docs/virtualserver-and-virtualserverroute.md)创建自定义资源设置：
     ```
     $ kubectl apply -f common/custom-resource-definitions.yaml
     ```
