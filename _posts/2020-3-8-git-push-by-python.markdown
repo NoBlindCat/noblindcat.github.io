@@ -6,3 +6,4 @@ categories: jekyll update
 ---
 用python代码完成懒人一个命令push代码
 本篇为测试篇
+再测试一下
